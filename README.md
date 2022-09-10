@@ -1,8 +1,8 @@
 # Image-encorder
 ## Usage
-`python encode.py [image-path] [comp-method]`  
+`python encode.py [image-path] [comp-method] [-debug (optional)]`  
 or  
-`python encode.py [image-path] [LZMA (bool)] [LZHAM (bool)] [Deflate (bool)]`  
+`python encode.py [image-path] [LZMA (bool)] [LZHAM (bool)] [Deflate (bool)] [-debug (optional)]`  
 note : bool => 0 / 1  
   
 ## Require
@@ -11,5 +11,3 @@ note : bool => 0 / 1
 - Python (less than 3.9)
     - pylzham  
   
-## Note  
-if u use this for debug use, plz edit `debug = 0` to `debug = 1` in encode.py  
