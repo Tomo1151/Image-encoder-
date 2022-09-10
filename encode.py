@@ -7,9 +7,13 @@ LZMA    = 0
 LZHAM   = 0
 Deflate = 0
 
-debug = 1
-
 arg = sys.argv
+debug = 0
+
+if "-debug" in arg:
+	debug = 1
+	arg.remove("-debug")
+
 if debug == 0:
 	shutil.rmtree('LZ/temp')
 	os.mkdir('LZ/temp')
@@ -38,7 +42,7 @@ elif len(arg) == 3:
 
 subprocess.run('node raw_data/raw-data.js' + " " + arg[1])
 
-subprocess.run('python LZ/compress.py' + " " + str(LZMA) + " " + str(LZHAM) + " " + str(Deflate), shell=True)
+subprocess.run('python LZ/compress.py' + " " + str(LZMA) + " " + str(LZHAM) + " " + str(Deflate) + " " + str(debug), shell=True)
 
 if debug == 0:
 	shutil.rmtree('LZ/temp')

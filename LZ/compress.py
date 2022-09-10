@@ -10,7 +10,13 @@ RED = '\u001b[31m'
 GREEN = '\u001b[32m'
 END = '\u001b[0m'
 
+debug = 0
+
 arg = sys.argv
+if arg[4] == "1":
+	debug = 1
+
+arg.pop(-1)
 	
 f = open('LZ/temp/rawPixel.data', 'rb')
 data = f.read()
@@ -68,137 +74,138 @@ if LZHAM == 1 : print(f'Size (LZHAM)  : {len(lzham_comp)} byte')
 if Deflate == 1 : print(f'Size (Deflate): {len(deflate_comp)} byte')
 print()
 
-print("──────────────────────────────────────\n")
+if debug == 1:
+	print("──────────────────────────────────────\n")
 
-print("Writing encoded data ...")
+	print("Writing encoded data ...")
 
-if LZMA == 1:
-	f = open('LZ/temp/comp_data_lzma.txt', 'wb')
-	f.write(lzma_comp)
-	f.close()
+	if LZMA == 1:
+		f = open('LZ/temp/comp_data_lzma.txt', 'wb')
+		f.write(lzma_comp)
+		f.close()
 
-if LZHAM == 1:
-	f = open('LZ/temp/comp_data_lzham.txt', 'wb')
-	f.write(lzham_comp)
-	f.close()
+	if LZHAM == 1:
+		f = open('LZ/temp/comp_data_lzham.txt', 'wb')
+		f.write(lzham_comp)
+		f.close()
 
-if Deflate == 1:
-	f = open('LZ/temp/comp_data_deflate.txt', 'wb')
-	f.write(deflate_comp)
-	f.close()
+	if Deflate == 1:
+		f = open('LZ/temp/comp_data_deflate.txt', 'wb')
+		f.write(deflate_comp)
+		f.close()
 
-print(" -" + GREEN + " Done\n" + END)
-
-print("Loading compressed data ...")
-
-if LZMA == 1:
-	f = open('LZ/temp/comp_data_lzma.txt', 'rb')
-	lzma_data = f.read()
-	f.close()
-
-
-if LZHAM == 1:
-	f = open('LZ/temp/comp_data_lzham.txt', 'rb')
-	lzham_data = f.read()
-	f.close()
-
-
-if Deflate == 1:
-	f = open('LZ/temp/comp_data_deflate.txt', 'rb')
-	deflate_data = f.read()
-	f.close()
-
-
-print(" -" + GREEN + " Done\n" + END)
-
-print("──────────────────────────────────────\n")
-
-if LZMA == 1:
-	print("Decoding with LZMA ...")
-	lzma_start = time.time()
-	lzma_decomp = lzma.decompress(lzma_data)
-	lzma_end = time.time()
-	print(f"Elapsed time: {lzma_end - lzma_start} sec")
 	print(" -" + GREEN + " Done\n" + END)
 
-if LZHAM == 1:
-	print("Decoding with LZHAM ...")
-	lzham_start = time.time()
-	lzham_decomp = lzham.decompress(lzham_data, len(data))
-	lzham_end = time.time()
-	print(f"Elapsed time: {lzham_end - lzham_start} sec")
+	print("Loading compressed data ...")
+
+	if LZMA == 1:
+		f = open('LZ/temp/comp_data_lzma.txt', 'rb')
+		lzma_data = f.read()
+		f.close()
+
+
+	if LZHAM == 1:
+		f = open('LZ/temp/comp_data_lzham.txt', 'rb')
+		lzham_data = f.read()
+		f.close()
+
+
+	if Deflate == 1:
+		f = open('LZ/temp/comp_data_deflate.txt', 'rb')
+		deflate_data = f.read()
+		f.close()
+
+
 	print(" -" + GREEN + " Done\n" + END)
 
-if Deflate == 1:
-	print("Decoding with Deflate ...")
-	deflate_start = time.time()
-	deflate_decomp = zlib.decompress(deflate_data)
-	deflate_end = time.time()
-	print(f"Elapsed time: {deflate_end - deflate_start} sec")
+	print("──────────────────────────────────────\n")
+
+	if LZMA == 1:
+		print("Decoding with LZMA ...")
+		lzma_start = time.time()
+		lzma_decomp = lzma.decompress(lzma_data)
+		lzma_end = time.time()
+		print(f"Elapsed time: {lzma_end - lzma_start} sec")
+		print(" -" + GREEN + " Done\n" + END)
+
+	if LZHAM == 1:
+		print("Decoding with LZHAM ...")
+		lzham_start = time.time()
+		lzham_decomp = lzham.decompress(lzham_data, len(data))
+		lzham_end = time.time()
+		print(f"Elapsed time: {lzham_end - lzham_start} sec")
+		print(" -" + GREEN + " Done\n" + END)
+
+	if Deflate == 1:
+		print("Decoding with Deflate ...")
+		deflate_start = time.time()
+		deflate_decomp = zlib.decompress(deflate_data)
+		deflate_end = time.time()
+		print(f"Elapsed time: {deflate_end - deflate_start} sec")
+		print(" -" + GREEN + " Done\n" + END)
+
+	if LZMA == 1 : print(f'Size (LZMA)   : {len(lzma_decomp)} byte')
+	if LZHAM == 1 : print(f'Size (LZHAM)  : {len(lzham_decomp)} byte')
+	if Deflate == 1 : print(f'Size (Deflate): {len(deflate_decomp)} byte')
+	print()
+
+	print("──────────────────────────────────────\n")
+
+	print("Writing decoded data ...")
+
+	if LZMA == 1:
+		f = open('LZ/temp/decomp_data_lzma.txt', 'wb')
+		f.write(lzma_decomp)
+		f.close()
+
+	if LZHAM == 1:
+		f = open('LZ/temp/decomp_data_lzham.txt', 'wb')
+		f.write(lzham_decomp)
+		f.close()
+
+	if Deflate == 1:
+		f = open('LZ/temp/decomp_data_deflate.txt', 'wb')
+		f.write(deflate_decomp)
+		f.close()
+
 	print(" -" + GREEN + " Done\n" + END)
 
-if LZMA == 1 : print(f'Size (LZMA)   : {len(lzma_decomp)} byte')
-if LZHAM == 1 : print(f'Size (LZHAM)  : {len(lzham_decomp)} byte')
-if Deflate == 1 : print(f'Size (Deflate): {len(deflate_decomp)} byte')
-print()
+	print("Checking consistency ...")
+	print()
 
-print("──────────────────────────────────────\n")
-
-print("Writing decoded data ...")
-
-if LZMA == 1:
-	f = open('LZ/temp/decomp_data_lzma.txt', 'wb')
-	f.write(lzma_decomp)
-	f.close()
-
-if LZHAM == 1:
-	f = open('LZ/temp/decomp_data_lzham.txt', 'wb')
-	f.write(lzham_decomp)
-	f.close()
-
-if Deflate == 1:
-	f = open('LZ/temp/decomp_data_deflate.txt', 'wb')
-	f.write(deflate_decomp)
-	f.close()
-
-print(" -" + GREEN + " Done\n" + END)
-
-print("Checking consistency ...")
-print()
-
-if LZMA == 1:
-	f = open('LZ/temp/decomp_data_lzma.txt', 'rb')
-	ch_lzma = f.read()
-	f.close()
+	if LZMA == 1:
+		f = open('LZ/temp/decomp_data_lzma.txt', 'rb')
+		ch_lzma = f.read()
+		f.close()
 
 
-if LZHAM == 1:
-	f = open('LZ/temp/decomp_data_lzham.txt', 'rb')
-	ch_lzham = f.read()
-	f.close()
+	if LZHAM == 1:
+		f = open('LZ/temp/decomp_data_lzham.txt', 'rb')
+		ch_lzham = f.read()
+		f.close()
 
 
-if Deflate == 1:
-	f = open('LZ/temp/decomp_data_deflate.txt', 'rb')
-	ch_deflate = f.read()
-	f.close()
+	if Deflate == 1:
+		f = open('LZ/temp/decomp_data_deflate.txt', 'rb')
+		ch_deflate = f.read()
+		f.close()
 
-if LZMA == 1 and data == ch_lzma:
-	print("LZMA   :" + GREEN + " OK" + END)
-elif LZMA == 1 and data != ch_lzma:
-	print("LZMA   :" + RED + " Fail" + END)
+	if LZMA == 1 and data == ch_lzma:
+		print("LZMA   :" + GREEN + " OK" + END)
+	elif LZMA == 1 and data != ch_lzma:
+		print("LZMA   :" + RED + " Fail" + END)
 
-if LZHAM == 1 and data == ch_lzham:
-	print("LZHAM  :" + GREEN + " OK" + END)
-elif LZHAM == 1 and data != ch_lzham:
-	print("LZHAM  :" + RED + " Fail" + END)
+	if LZHAM == 1 and data == ch_lzham:
+		print("LZHAM  :" + GREEN + " OK" + END)
+	elif LZHAM == 1 and data != ch_lzham:
+		print("LZHAM  :" + RED + " Fail" + END)
 
-if Deflate == 1 and data == ch_deflate:
-	print("Deflate:" + GREEN + " OK" + END)
-elif Deflate == 1 and data != ch_deflate:
-	print("Deflate:" + RED + " Fail" + END)
+	if Deflate == 1 and data == ch_deflate:
+		print("Deflate:" + GREEN + " OK" + END)
+	elif Deflate == 1 and data != ch_deflate:
+		print("Deflate:" + RED + " Fail" + END)
 
-print()
+	print()
 print(" -" + GREEN + " Done\n" + END)
 print("──────────────────────────────────────")
 
