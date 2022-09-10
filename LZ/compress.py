@@ -231,8 +231,8 @@ def make_image_container(IDAT, name):
 	f.write(IEND)
 
 if LZMA == 1:
-	make_image_container(lzma_comp, "lzma.pic")
+	make_image_container(lzma_comp, "output/lzma.png")
 if LZHAM == 1:
-	make_image_container(lzham_comp, "lzham.pic")
+	make_image_container(lzham_comp, "output/lzham.png")
 if Deflate == 1:
-	make_image_container(deflate_comp, "deflate.png")
+	make_image_container(deflate_comp, "output/deflate.png")
