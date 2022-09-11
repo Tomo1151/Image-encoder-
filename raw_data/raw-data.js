@@ -1,12 +1,12 @@
 const PNG = require('pngjs').PNG;
 const fs = require('fs');
 
-if (process.argv[2] == null) {
-  console.log("Usage: `node raw-data.js \u001b[31m[file_name]`\u001b[0m")
-  return -1;
+if (!fs.existsSync('LZ/temp/sheared.data')) {
+  console.log("sheared.data does not exist.")
+  return 1;
 }
 
-fs.createReadStream(process.argv[2])
+fs.createReadStream('LZ/temp/sheared.data')
 .pipe(
   new PNG({
   	deflateLevel: 9,

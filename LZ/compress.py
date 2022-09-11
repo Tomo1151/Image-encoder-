@@ -44,9 +44,9 @@ if "1" not in arg:
 	print("No method selected.")
 	exit()
 
-print("──────────────────────────────────────\n")
+
 if LZMA == 1:
-	print("Encoding with LZMA ...")
+	print("\nw/ LZMA")
 	lzma_start = time.time()
 	lzma_comp = lzma.compress(data)
 	lzma_end = time.time()
@@ -54,7 +54,7 @@ if LZMA == 1:
 	print(" -" + GREEN + " Done\n" + END)
 
 if LZHAM == 1:
-	print("Encoding with LZHAM ...")
+	print("w/ LZHAM")
 	lzham_start = time.time()
 	lzham_comp = lzham.compress(data)
 	lzham_end = time.time()
@@ -62,7 +62,7 @@ if LZHAM == 1:
 	print(" -" + GREEN + " Done\n" + END)
 
 if Deflate == 1:
-	print("Encoding with Deflate ...")
+	print("w/ Deflate")
 	deflate_start = time.time()
 	deflate_comp = zlib.compress(data)
 	deflate_end = time.time()
@@ -226,7 +226,6 @@ def make_image_container(IDAT, name):
 	IDAT_CRC_MARGIN = b"\x00\x00\x00\x00"
 	length = len(IDAT)
 	IDAT_LENGTH = length.to_bytes(4, 'big')
-	# print(IDAT_LENGTH.hex())
 
 	f = open(name, 'wb')
 	f.write(SIGNATURE)
