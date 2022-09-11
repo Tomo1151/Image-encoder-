@@ -50,6 +50,7 @@ if LZMA == 1:
 	lzma_start = time.time()
 	lzma_comp = lzma.compress(data)
 	lzma_end = time.time()
+	comp_ratio_lzma = '{:.2%}'.format(1 - (len(lzma_comp) / len(data)))
 	print(f"Elapsed time: {lzma_end - lzma_start} sec")
 	print(" -" + GREEN + " Done\n" + END)
 
@@ -58,6 +59,7 @@ if LZHAM == 1:
 	lzham_start = time.time()
 	lzham_comp = lzham.compress(data)
 	lzham_end = time.time()
+	comp_ratio_lzham = '{:.2%}'.format(1 - (len(lzham_comp) / len(data)))	
 	print(f"Elapsed time: {lzham_end - lzham_start} sec")
 	print(" -" + GREEN + " Done\n" + END)
 
@@ -66,12 +68,13 @@ if Deflate == 1:
 	deflate_start = time.time()
 	deflate_comp = zlib.compress(data)
 	deflate_end = time.time()
+	comp_ratio_deflate = '{:.2%}'.format(1 - (len(deflate_comp) / len(data)))	
 	print(f"Elapsed time: {deflate_end - deflate_start} sec")
 	print(" -" + GREEN + " Done\n" + END)
 
-if LZMA == 1 : print(f'Size (LZMA)   : {len(lzma_comp)} byte')
-if LZHAM == 1 : print(f'Size (LZHAM)  : {len(lzham_comp)} byte')
-if Deflate == 1 : print(f'Size (Deflate): {len(deflate_comp)} byte')
+if LZMA == 1 : print(f'Size (LZMA)   : {len(lzma_comp)} byte ( -{comp_ratio_lzma} )')
+if LZHAM == 1 : print(f'Size (LZHAM)  : {len(lzham_comp)} byte ( -{comp_ratio_lzham} )')
+if Deflate == 1 : print(f'Size (Deflate): {len(deflate_comp)} byte ( -{comp_ratio_deflate} )')
 print()
 
 if debug == 1:
