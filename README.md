@@ -1,8 +1,8 @@
 # Image-encoder
 ## Usage
-`python encode.py [image-path] [comp-method] [-debug (optional)]`  
+`python encode.py [file name (./img/)] [comp-method] [-debug (optional)]`  
 or  
-`python encode.py [image-path] [LZMA (bool)] [LZHAM (bool)] [Deflate (bool)] [-debug (optional)]`  
+`python encode.py [file name (./img/)] [LZMA (bool)] [LZHAM (bool)] [Deflate (bool)] [-debug (optional)]`  
 note : bool => 0 / 1  
   
 ## Require
