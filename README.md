@@ -1,4 +1,4 @@
-# Image-encorder
+# Image-encoder
 ## Usage
 `python encode.py [image-path] [comp-method] [-debug (optional)]`  
 or  
