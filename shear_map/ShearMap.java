@@ -9,6 +9,8 @@ public class ShearMap {
 	public static final int COLOR_SIZE = 256; 
 
 	public static void main(String[] args) {
+		long startTime = System.currentTimeMillis();
+
 		int picWidth;
 		int picHeight;
 		BufferedImage image;
@@ -23,7 +25,7 @@ public class ShearMap {
 		int[][] mapGB = new int[COLOR_SIZE][COLOR_SIZE];
 
 		try{
-			image = ImageIO.read(new File("img/" + args[0] + ".png"));
+			image = ImageIO.read(new File("../img/" + args[0] + ".png"));
 		}catch(IOException e){
 			image = null;
 			System.out.println(e);
@@ -194,9 +196,12 @@ public class ShearMap {
 			}
 		}
 		try{
-			ImageIO.write(transedImage, "png", new File("LZ/temp/sheared.data"));
+			ImageIO.write(transedImage, "png", new File("../LZ/temp/sheared.data"));
 		}catch(Exception e){
 			System.out.println(e);
 		}
+		// long endTime = System.currentTimeMillis();
+
+		// System.out.println((endTime - startTime) / 1000.0 + " sec");
 	}
 }

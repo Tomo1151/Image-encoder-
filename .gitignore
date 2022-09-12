@@ -3,3 +3,4 @@ output/*.png
 img/*.png
 img/*.bmp
 .class
+*.class
