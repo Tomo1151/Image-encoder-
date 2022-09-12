@@ -5,6 +5,7 @@ import time
 f = open('output/deflate.png', 'rb')
 
 PngSignature = b'\x89PNG\r\n\x1a\n'
+
 if f.read(len(PngSignature)) != PngSignature:
     raise Exception('Invalid PNG Signature')
 
