@@ -8,6 +8,49 @@ PngSignature = b'\x89PNG\r\n\x1a\n'
 if f.read(len(PngSignature)) != PngSignature:
     raise Exception('Invalid PNG Signature')
 
+def calc_sheared_map(width, height, rg, rb, gb, rgb_data):
+    # start = time.time()
+    result = [None] * width * height
+    RED   = 0
+    GREEN = 1
+    BLUE  = 2
+
+    idx = 0
+    for pixel in rgb_data:
+        shear_gb = pixel[BLUE]  + pixel[GREEN] - gb
+        shear_rb = pixel[BLUE]  + pixel[RED]   - rb
+        shear_rg = pixel[GREEN] + pixel[RED]   - rg
+
+        if shear_gb < 0:
+            pixel[BLUE] = 0
+        elif shear_gb > 255:
+            pixel[BLUE] = 255
+        else:
+            pixel[BLUE]  = shear_gb
+
+        if shear_rb < 0:
+            pixel[BLUE] = 0
+        elif shear_rb > 255:
+            pixel[BLUE] = 255
+        else:
+            pixel[BLUE] = shear_rb
+
+        if shear_rg < 0:
+            pixel[GREEN] = 0
+        elif shear_rg > 255:
+            pixel[GREEN] = 255
+        else:
+            pixel[GREEN] = shear_rg
+
+        
+        result[idx] = pixel
+        idx += 1
+
+    # end = time.time()
+
+    # print(f"calc shear map time: {end - start} sec")
+    return result
+
 def read_chunk(f):
     # Returns (chunk_type, chunk_data)
     start = time.time()
