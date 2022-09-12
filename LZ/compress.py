@@ -212,6 +212,10 @@ if debug == 1:
 print(" -" + GREEN + " Done\n" + END)
 print("──────────────────────────────────────")
 
+def calc_crc32_IDAT(IDAT_data):
+	chunk_type = b"IDAT"
+	return zlib.crc32(chunk_type + IDAT_data)
+
 def make_image_container(IDAT, name):
 	f = open('LZ/temp/SIGNATURE.data', 'rb')
 	SIGNATURE = f.read()
@@ -226,9 +230,10 @@ def make_image_container(IDAT, name):
 	f.close()
 
 	IDAT_TYPE = b"IDAT"
-	IDAT_CRC_MARGIN = b"\x00\x00\x00\x00"
+	# IDAT_CRC_MARGIN = b"\x00\x00\x00\x00"
 	length = len(IDAT)
 	IDAT_LENGTH = length.to_bytes(4, 'big')
+	IDAT_CRC = calc_crc32_IDAT(IDAT).to_bytes(4, 'big')
 
 	f = open(name, 'wb')
 	f.write(SIGNATURE)
@@ -236,7 +241,7 @@ def make_image_container(IDAT, name):
 	f.write(IDAT_LENGTH)
 	f.write(IDAT_TYPE)
 	f.write(IDAT)
-	f.write(IDAT_CRC_MARGIN)
+	f.write(IDAT_CRC)
 	f.write(IEND)
 
 if LZMA == 1:
