@@ -1,5 +1,6 @@
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.Math;
 import javax.imageio.ImageIO;
@@ -13,6 +14,7 @@ public class ShearMap {
 
 		int picWidth;
 		int picHeight;
+		FileOutputStream fos;
 		BufferedImage image;
 		BufferedImage imageC;
 		BufferedImage imageRG;
@@ -25,10 +27,12 @@ public class ShearMap {
 		int[][] mapGB = new int[COLOR_SIZE][COLOR_SIZE];
 
 		try{
-			image = ImageIO.read(new File("../img/" + args[0] + ".png"));
+			image = ImageIO.read(new File("img/" + args[0] + ".png"));
+			fos = new FileOutputStream("LZ/temp/shear.data");
 		}catch(IOException e){
 			image = null;
 			System.out.println(e);
+			fos = null;
 		}
 
 		picWidth = image.getWidth();
@@ -80,6 +84,12 @@ public class ShearMap {
 						}
 					}
 				}
+			}
+
+			try{
+				fos.write(minRmG * -1);
+			}catch(IOException e){
+				System.out.println(e);
 			}
 
 
@@ -136,6 +146,12 @@ public class ShearMap {
 				}
 			}
 
+			try{
+				fos.write(minRmG * -1);
+			}catch(IOException e){
+				System.out.println(e);
+			}
+
 			for(int i = 0; i < picHeight; i++){
 				for(int j = 0; j < picWidth; j++){
 					int c = (transedImage.getRGB(i, j) + 256*256*256) % (256*256*256);
@@ -174,6 +190,12 @@ public class ShearMap {
 				}
 			}
 
+			try{
+				fos.write(minRmG * -1);
+			}catch(IOException e){
+				System.out.println(e);
+			}
+
 			for(int i = 0; i < picHeight; i++){
 				for(int j = 0; j < picWidth; j++){
 					int c = (transedImage.getRGB(i, j) + 256*256*256) % (256*256*256);
@@ -185,6 +207,7 @@ public class ShearMap {
 			}
 		}
 
+
 		transedImageRG = new BufferedImage(COLOR_SIZE, COLOR_SIZE, BufferedImage.TYPE_INT_RGB);
 		for(int i = 0; i < COLOR_SIZE; i++){
 			for(int j = 0; j < COLOR_SIZE; j++){
@@ -195,8 +218,16 @@ public class ShearMap {
 				transedImageRG.setRGB(g, b, 0xffffff);
 			}
 		}
+
 		try{
-			ImageIO.write(transedImage, "png", new File("../LZ/temp/sheared.data"));
+			fos.flush();
+			fos.close();
+		}catch(IOException e){
+			System.out.println(e);
+		}
+
+		try{
+			ImageIO.write(transedImage, "png", new File("LZ/temp/sheared.data"));
 		}catch(Exception e){
 			System.out.println(e);
 		}

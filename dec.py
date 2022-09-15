@@ -66,9 +66,13 @@ def read_chunk(f):
     return chunk_type, chunk_data
 
 chunks = []
+
 while True:
     chunk_type, chunk_data = read_chunk(f)
     chunks.append((chunk_type, chunk_data))
+    # print(chunk_type)
+    if chunk_type == b'icPT':
+        icPT = chunk_data
     if chunk_type == b'IEND':
         break
 
@@ -135,6 +139,9 @@ for r in range(height): # for each scanline
         else:
             raise Exception('unknown filter type: ' + str(filter_type))
         Recon.append(Recon_x & 0xff) # truncation to byte
+
+# print(icPT[0])
+
 
 end = time.time()
 print(f"unfiltering: {end - start} sec")

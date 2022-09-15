@@ -49,15 +49,25 @@ def calc_sheared_map(width, height, rg, rb, gb, rgb_data):
 
 def PaethPredictor(a, b, c):
     p = a + b - c
-    pa = abs(p - a)
-    pb = abs(p - b)
-    pc = abs(p - c)
-    if pa <= pb and pa <= pc:
-        Pr = a
-    elif pb <= pc:
-        Pr = b
-    else:
-        Pr = c
+#    pa = abs(p - a)
+#    pb = abs(p - b)
+#    pc = abs(p - c)
+    pa = abs(b - c)
+    pb = abs(a - c)
+    pc = abs(a + b - 2*c)
+    # if pa <= pb and pa <= pc:
+    #     Pr = a
+    # elif pb <= pc:
+    #     Pr = b
+    # else:
+    #     Pr = c
+    Pr = a if pa <= pb and pa <= pc else b if pb <= pc else c
+    # if abs(b-c) <= abs(a-c) and abc(b-c) <= abs(a+b-2*c):
+    #     Pr = a
+    # elif pb <= pc:
+    #     Pr = b
+    # else:
+    #     Pr = c
     return Pr
 
 # start_time = time.time();
@@ -147,7 +157,7 @@ if color_type == 4 or color_type == 6:
 elif color_type == 2:
     bytes_per_pixel = 3
 
-Recon = []
+Recon = [None] * width * height * bytes_per_pixel
 stride = width * bytes_per_pixel
 
 previous = None
@@ -173,48 +183,74 @@ def Recon_c(r, c):
     return Recon[(r-1) * stride + c - bytes_per_pixel] if r > 0 and c >= bytes_per_pixel else 0
 
 idx = 0
+recon_index = 0
+
+s = time.time()
+
+def filter0(r, c):
+    return 0
+
+def filter1(r, c):
+    return Recon_a(r, c)
+
+def filter2(r, c):
+    return Recon_b(r, c)
+
+def filter3(r, c):
+    return (Recon_a(r, c) + Recon_b(r, c)) // 2
+
+def filter4(r, c):
+    return PaethPredictor(Recon_a(r, c), Recon_b(r, c), Recon_c(r, c))
+
 for r in range(height):
     filter_type = filtered_RGB_data[idx]
     idx += 1
+
+    if filter_type == 0:
+        filter_ = filter0
+    elif filter_type == 1:
+        filter_ = filter1
+    elif filter_type == 2:
+        filter_ = filter2
+    elif filter_type == 3:
+        filter_ = filter3
+    elif filter_type == 4:
+        filter_ = filter4
+    else:
+        print(filter_type)
 
     for c in range(3 * width):
         Filt_x = filtered_RGB_data[idx]
         idx += 1
 
-        if filter_type == 0:
-            Recon_x = Filt_x
-        elif filter_type == 1:
-            Recon_x = Filt_x + Recon_a(r, c)
-        elif filter_type == 2:
-            Recon_x = Filt_x + Recon_b(r, c)
-        elif filter_type == 3:
-            Recon_x = Filt_x + (Recon_a(r, c) + Recon_b(r, c)) // 2
-        elif filter_type == 4:
-            Recon_x = Filt_x + PaethPredictor(Recon_a(r, c), Recon_b(r, c), Recon_c(r, c))
-        else:
-            print(filter_type)
+        Recon_x = Filt_x + filter_(r, c)
 
-        Recon.append(Recon_x & 0xff)
+        # Recon.append(Recon_x & 0xff)
+        Recon[recon_index] = Recon_x & 0xff
+        recon_index += 1;
         # RGB_Map[idx] = (Recon_x & 0xff)
 
+e = time.time()
+print(f"{e - s} sec")
+# print(Recon[3025:4025])
 
-pixel_count = width * height
-start = 0
-split = 3
-idx = 0
-rgb_data = [None] * width * height
+# pixel_count = width * height
+# start = 0
+# split = 3
+# idx = 0
+# rgb_data = [None] * width * height
 
-for i in Recon:
-    rgb_data[idx] = Recon[start:start+split:1]
-    start += split
-    idx += 1
-    if start >= pixel_count:
-        break
+# for i in Recon:
+#     rgb_data[idx] = Recon[start:start+split:1]
+#     start += split
+#     idx += 1
+#     if start >= pixel_count:
+#         break
 
 # print(w)
 # print(h)
 # print(metadata)
-print(rgb_data[0][0:12])
+# print(rgb_data[0][0:12])
 
 # image_array = calc_sheared_map(width, height, 69, 88, 23, rgb_data)
 

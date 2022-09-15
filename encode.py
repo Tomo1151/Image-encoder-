@@ -24,26 +24,29 @@ if debug == 0:
 	os.mkdir('LZ/temp')
 
 if arg[1] == "-usage":
-	print("Usage:\npython encode.py [image-path] [comp-method]")
+	print("Usage:\npython encode.py [image-path] [output-path] [comp-method]")
 	print("\nor\n")
-	print("python encode.py [image-path] [LZMA (bool)] [LZHAM (bool)] [Deflate (bool)]")
+	print("python encode.py [image-path] [output-path] [LZMA (bool)] [LZHAM (bool)] [Deflate (bool)]")
 	exit()
 
 
-if len(arg) == 5:
+if len(arg) == 6:
 	if arg[2] == "1":
 		LZMA = 1
 	if arg[3] == "1":
 		LZHAM = 1
 	if arg[4] == "1":
 		Deflate = 1
-elif len(arg) == 3:
+elif len(arg) == 4:
 	if arg[2] == 'LZMA':
 		LZMA = 1
 	if arg[2] == 'LZHAM':
 		LZHAM = 1
 	if arg[2] == 'Deflate':
 		Deflate = 1
+
+print(f"{LZMA} {LZHAM} {Deflate}")
+print(arg)
 
 print("──────────────────────────────────────\n")
 print("Generating shear_map data ...")
@@ -80,7 +83,7 @@ except subprocess.CalledProcessError as e:
 print("──────────────────────────────────────\n")
 print("Encoding the image data ...")
 try:
-	subprocess.run('python LZ/compress.py' + " " + str(LZMA) + " " + str(LZHAM) + " " + str(Deflate) + " " + str(debug), shell=True)
+	subprocess.run('python LZ/compress.py' + " " + str(LZMA) + " " + str(LZHAM) + " " + str(Deflate) + " " + str(debug) +  " " + arg[5], shell=True)
 	encode_end = time.time()
 	print(f"\n Encoding time: {encode_end - encode_start} sec")
 	print("  -" + GREEN + " Done\n" + END)

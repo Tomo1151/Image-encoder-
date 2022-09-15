@@ -16,29 +16,34 @@ arg = sys.argv
 if arg[4] == "1":
 	debug = 1
 
-arg.pop(-1)
+arg.pop(4)
+out_name = arg[4]
 	
 f = open('LZ/temp/rawPixel.data', 'rb')
 data = f.read()
+
+print(arg)
+print(out_name)
 
 LZMA    = 0
 LZHAM   = 0
 Deflate = 0
 
-if len(arg) == 4:
+if len(arg) == 5:
 	if arg[1] == "1":
 		LZMA = 1
 	if arg[2] == "1":
 		LZHAM = 1
 	if arg[3] == "1":
 		Deflate = 1
-elif len(arg) == 2:
+elif len(arg) == 3:
 	if arg == 'LZMA':
 		LZMA = 1
 	if arg == 'LZHAM':
 		LZHAM = 1
 	if arg == 'Deflate':
 		Deflate = 1
+
 
 if "1" not in arg:
 	print("No method selected.")
@@ -212,9 +217,8 @@ if debug == 1:
 print(" -" + GREEN + " Done\n" + END)
 print("──────────────────────────────────────")
 
-def calc_crc32_IDAT(IDAT_data):
-	chunk_type = b"IDAT"
-	return zlib.crc32(chunk_type + IDAT_data)
+def calc_crc32(chunk_type, chunk_data):
+	return zlib.crc32(chunk_type + chunk_data)
 
 def make_image_container(IDAT, name):
 	f = open('LZ/temp/SIGNATURE.data', 'rb')
@@ -229,24 +233,40 @@ def make_image_container(IDAT, name):
 	IEND = f.read()
 	f.close()
 
+	f = open('LZ/temp/shear.data', 'rb')
+	icPT = f.read()
+	icPT_TYPE = b"icPT"
+	length_icpt = len(icPT)
+	icPT_LENGTH = length_icpt.to_bytes(4, 'big')
+	icPT_CRC = calc_crc32(icPT_TYPE, icPT).to_bytes(4, 'big')
+	f.close()
+
 	IDAT_TYPE = b"IDAT"
-	# IDAT_CRC_MARGIN = b"\x00\x00\x00\x00"
-	length = len(IDAT)
-	IDAT_LENGTH = length.to_bytes(4, 'big')
-	IDAT_CRC = calc_crc32_IDAT(IDAT).to_bytes(4, 'big')
+	length_idat = len(IDAT)
+	IDAT_LENGTH = length_idat.to_bytes(4, 'big')
+	IDAT_CRC = calc_crc32(IDAT_TYPE, IDAT).to_bytes(4, 'big')
 
 	f = open(name, 'wb')
 	f.write(SIGNATURE)
+
 	f.write(IHDR)
+
+	f.write(icPT_LENGTH)
+	f.write(icPT_TYPE)
+	f.write(icPT)
+	f.write(icPT_CRC)
+
 	f.write(IDAT_LENGTH)
 	f.write(IDAT_TYPE)
 	f.write(IDAT)
 	f.write(IDAT_CRC)
+
 	f.write(IEND)
 
+
 if LZMA == 1:
-	make_image_container(lzma_comp, "output/lzma.png")
+	make_image_container(lzma_comp, f"LZMA_out/{out_name}.pic")
 if LZHAM == 1:
-	make_image_container(lzham_comp, "output/lzham.png")
+	make_image_container(lzham_comp, f"LZHAM_out/{out_name}.pic")
 if Deflate == 1:
-	make_image_container(deflate_comp, "output/deflate.png")
+	make_image_container(deflate_comp, f"Deflate_out/{out_name}.pic")
