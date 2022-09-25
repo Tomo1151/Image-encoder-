@@ -1,0 +1,455 @@
+──────────────────────────────────────
+
+Generating shear_map data ...
+Elapsed time: 1.0435822010040283 sec
+ - Done
+
+──────────────────────────────────────
+
+Pre encoding ...
+Elapsed time: 0.25476765632629395 sec
+ - Done
+
+──────────────────────────────────────
+
+Encoding the image data ...
+
+w/ LZMA
+Elapsed time: 0.05123543739318848 sec
+ - Done
+
+w/ Deflate
+Elapsed time: 0.00785517692565918 sec
+ - Done
+
+Size (LZMA)   : 142432 byte ( -27.65% )
+Size (Deflate): 147421 byte ( -25.12% )
+
+ - Done
+
+──────────────────────────────────────
+
+ Encoding time: 1.4153995513916016 sec
+  - Done
+
+Elapsed time: 1.4714102745056152 sec
+──────────────────────────────────────
+
+Generating shear_map data ...
+Elapsed time: 1.3768913745880127 sec
+ - Done
+
+──────────────────────────────────────
+
+Pre encoding ...
+Elapsed time: 0.26018214225769043 sec
+ - Done
+
+──────────────────────────────────────
+
+Encoding the image data ...
+
+w/ LZMA
+Elapsed time: 0.06485986709594727 sec
+ - Done
+
+w/ Deflate
+Elapsed time: 0.020945310592651367 sec
+ - Done
+
+Size (LZMA)   : 102896 byte ( -47.73% )
+Size (Deflate): 112983 byte ( -42.61% )
+
+ - Done
+
+──────────────────────────────────────
+
+ Encoding time: 1.7846343517303467 sec
+  - Done
+
+Elapsed time: 1.8398001194000244 sec
+──────────────────────────────────────
+
+Generating shear_map data ...
+Elapsed time: 0.897406816482544 sec
+ - Done
+
+──────────────────────────────────────
+
+Pre encoding ...
+Elapsed time: 0.3001532554626465 sec
+ - Done
+
+──────────────────────────────────────
+
+Encoding the image data ...
+
+w/ LZMA
+Elapsed time: 0.0702066421508789 sec
+ - Done
+
+w/ Deflate
+Elapsed time: 0.03000187873840332 sec
+ - Done
+
+Size (LZMA)   : 84716 byte ( -56.97% )
+Size (Deflate): 92668 byte ( -52.93% )
+
+ - Done
+
+──────────────────────────────────────
+
+ Encoding time: 1.3632192611694336 sec
+  - Done
+
+Elapsed time: 1.4273881912231445 sec
+──────────────────────────────────────
+
+Generating shear_map data ...
+Elapsed time: 0.9452896118164062 sec
+ - Done
+
+──────────────────────────────────────
+
+Pre encoding ...
+Elapsed time: 0.2609903812408447 sec
+ - Done
+
+──────────────────────────────────────
+
+Encoding the image data ...
+
+w/ LZMA
+Elapsed time: 0.05703306198120117 sec
+ - Done
+
+w/ Deflate
+Elapsed time: 0.01383352279663086 sec
+ - Done
+
+Size (LZMA)   : 106612 byte ( -45.84% )
+Size (Deflate): 115790 byte ( -41.18% )
+
+ - Done
+
+──────────────────────────────────────
+
+ Encoding time: 1.339278221130371 sec
+  - Done
+
+Elapsed time: 1.3992805480957031 sec
+──────────────────────────────────────
+
+Generating shear_map data ...
+Elapsed time: 0.8685214519500732 sec
+ - Done
+
+──────────────────────────────────────
+
+Pre encoding ...
+Elapsed time: 0.297102689743042 sec
+ - Done
+
+──────────────────────────────────────
+
+Encoding the image data ...
+
+w/ LZMA
+Elapsed time: 0.06106090545654297 sec
+ - Done
+
+w/ Deflate
+Elapsed time: 0.016123056411743164 sec
+ - Done
+
+Size (LZMA)   : 104928 byte ( -46.70% )
+Size (Deflate): 113600 byte ( -42.30% )
+
+ - Done
+
+──────────────────────────────────────
+
+ Encoding time: 1.3073155879974365 sec
+  - Done
+
+Elapsed time: 1.3701870441436768 sec
+──────────────────────────────────────
+
+Generating shear_map data ...
+Elapsed time: 0.9904379844665527 sec
+ - Done
+
+──────────────────────────────────────
+
+Pre encoding ...
+Elapsed time: 0.25388097763061523 sec
+ - Done
+
+──────────────────────────────────────
+
+Encoding the image data ...
+
+w/ LZMA
+Elapsed time: 0.04619860649108887 sec
+ - Done
+
+w/ Deflate
+Elapsed time: 0.008999109268188477 sec
+ - Done
+
+Size (LZMA)   : 119036 byte ( -39.53% )
+Size (Deflate): 128335 byte ( -34.81% )
+
+ - Done
+
+──────────────────────────────────────
+
+ Encoding time: 1.3591253757476807 sec
+  - Done
+
+Elapsed time: 1.420391321182251 sec
+──────────────────────────────────────
+
+Generating shear_map data ...
+Elapsed time: 0.8667342662811279 sec
+ - Done
+
+──────────────────────────────────────
+
+Pre encoding ...
+Elapsed time: 0.2830986976623535 sec
+ - Done
+
+──────────────────────────────────────
+
+Encoding the image data ...
+
+w/ LZMA
+Elapsed time: 0.04914140701293945 sec
+ - Done
+
+w/ Deflate
+Elapsed time: 0.01302480697631836 sec
+ - Done
+
+Size (LZMA)   : 110936 byte ( -43.65% )
+Size (Deflate): 119507 byte ( -39.29% )
+
+ - Done
+
+──────────────────────────────────────
+
+ Encoding time: 1.2716689109802246 sec
+  - Done
+
+Elapsed time: 1.3296196460723877 sec
+──────────────────────────────────────
+
+Generating shear_map data ...
+Elapsed time: 0.9099006652832031 sec
+ - Done
+
+──────────────────────────────────────
+
+Pre encoding ...
+Elapsed time: 0.25248050689697266 sec
+ - Done
+
+──────────────────────────────────────
+
+Encoding the image data ...
+
+w/ LZMA
+Elapsed time: 0.04499006271362305 sec
+ - Done
+
+w/ Deflate
+Elapsed time: 0.007001638412475586 sec
+ - Done
+
+Size (LZMA)   : 144744 byte ( -26.48% )
+Size (Deflate): 149854 byte ( -23.88% )
+
+ - Done
+
+──────────────────────────────────────
+
+ Encoding time: 1.2732267379760742 sec
+  - Done
+
+Elapsed time: 1.331239938735962 sec
+──────────────────────────────────────
+
+Generating shear_map data ...
+Elapsed time: 0.8489089012145996 sec
+ - Done
+
+──────────────────────────────────────
+
+Pre encoding ...
+Elapsed time: 0.29108500480651855 sec
+ - Done
+
+──────────────────────────────────────
+
+Encoding the image data ...
+
+w/ LZMA
+Elapsed time: 0.05195927619934082 sec
+ - Done
+
+w/ Deflate
+Elapsed time: 0.02179431915283203 sec
+ - Done
+
+Size (LZMA)   : 93104 byte ( -52.71% )
+Size (Deflate): 101363 byte ( -48.51% )
+
+ - Done
+
+──────────────────────────────────────
+
+ Encoding time: 1.2728545665740967 sec
+  - Done
+
+Elapsed time: 1.3250160217285156 sec
+──────────────────────────────────────
+
+Generating shear_map data ...
+Elapsed time: 0.9075322151184082 sec
+ - Done
+
+──────────────────────────────────────
+
+Pre encoding ...
+Elapsed time: 0.24497151374816895 sec
+ - Done
+
+──────────────────────────────────────
+
+Encoding the image data ...
+
+w/ LZMA
+Elapsed time: 0.062201499938964844 sec
+ - Done
+
+w/ Deflate
+Elapsed time: 0.02086186408996582 sec
+ - Done
+
+Size (LZMA)   : 91740 byte ( -53.40% )
+Size (Deflate): 100629 byte ( -48.88% )
+
+ - Done
+
+──────────────────────────────────────
+
+ Encoding time: 1.2935059070587158 sec
+  - Done
+
+Elapsed time: 1.3505194187164307 sec
+──────────────────────────────────────
+
+Generating shear_map data ...
+Elapsed time: 0.855952262878418 sec
+ - Done
+
+──────────────────────────────────────
+
+Pre encoding ...
+Elapsed time: 0.2850010395050049 sec
+ - Done
+
+──────────────────────────────────────
+
+Encoding the image data ...
+
+w/ LZMA
+Elapsed time: 0.045201778411865234 sec
+ - Done
+
+w/ Deflate
+Elapsed time: 0.009994983673095703 sec
+ - Done
+
+Size (LZMA)   : 116568 byte ( -40.79% )
+Size (Deflate): 126548 byte ( -35.72% )
+
+ - Done
+
+──────────────────────────────────────
+
+ Encoding time: 1.256035327911377 sec
+  - Done
+
+Elapsed time: 1.310065746307373 sec
+──────────────────────────────────────
+
+Generating shear_map data ...
+Elapsed time: 0.8808650970458984 sec
+ - Done
+
+──────────────────────────────────────
+
+Pre encoding ...
+Elapsed time: 0.26098084449768066 sec
+ - Done
+
+──────────────────────────────────────
+
+Encoding the image data ...
+
+w/ LZMA
+Elapsed time: 0.05499100685119629 sec
+ - Done
+
+w/ Deflate
+Elapsed time: 0.017004728317260742 sec
+ - Done
+
+Size (LZMA)   : 105932 byte ( -46.19% )
+Size (Deflate): 114417 byte ( -41.88% )
+
+ - Done
+
+──────────────────────────────────────
+
+ Encoding time: 1.2777066230773926 sec
+  - Done
+
+Elapsed time: 1.3337633609771729 sec
+──────────────────────────────────────
+
+Generating shear_map data ...
+Elapsed time: 35.40582799911499 sec
+ - Done
+
+──────────────────────────────────────
+
+Pre encoding ...
+Elapsed time: 2.856961250305176 sec
+ - Done
+
+──────────────────────────────────────
+
+Encoding the image data ...
+
+w/ LZMA
+Elapsed time: 20.15695285797119 sec
+ - Done
+
+w/ Deflate
+Elapsed time: 1.7329967021942139 sec
+ - Done
+
+Size (LZMA)   : 2983596 byte ( -89.13% )
+Size (Deflate): 4066547 byte ( -85.18% )
+
+ - Done
+
+──────────────────────────────────────
+
+ Encoding time: 60.23163914680481 sec
+  - Done
+
+Elapsed time: 60.293601751327515 sec

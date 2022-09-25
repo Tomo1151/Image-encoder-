@@ -45,8 +45,8 @@ elif len(arg) == 4:
 	if arg[2] == 'Deflate':
 		Deflate = 1
 
-print(f"{LZMA} {LZHAM} {Deflate}")
-print(arg)
+# print(f"{LZMA} {LZHAM} {Deflate}")
+# print(arg)
 
 print("──────────────────────────────────────\n")
 print("Generating shear_map data ...")
